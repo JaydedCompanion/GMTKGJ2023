@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HorizontalP : MonoBehaviour, IPlatforms
+public class VerticalP : MonoBehaviour,IPlatforms
 {
     public bool selected = false;
 
     private Rigidbody2D m_Rigidbody2D;
-    private float horizontalMove = 0f;
+    private float verticalMove = 0f;
     public float moveSpeed = 5f;
     public float runAcceleration = 1f;
 	public float runDecceleration = 2f;
@@ -28,9 +28,9 @@ public class HorizontalP : MonoBehaviour, IPlatforms
         {
             m_Rigidbody2D.bodyType = RigidbodyType2D.Dynamic;
             //player move this object if it is selected
-            horizontalMove = Input.GetAxisRaw("Horizontal") * moveSpeed;
+            verticalMove = Input.GetAxisRaw("Vertical") * moveSpeed;
         }else{
-            horizontalMove = 0;
+            verticalMove = 0;
             m_Rigidbody2D.velocity = new Vector3(0,0,0);
             m_Rigidbody2D.bodyType = RigidbodyType2D.Kinematic;
         }
@@ -38,7 +38,7 @@ public class HorizontalP : MonoBehaviour, IPlatforms
 
     void FixedUpdate()
     {
-        Move(horizontalMove);
+        Move(verticalMove);
     }
 
     public void onClickEvent()
@@ -62,11 +62,11 @@ public class HorizontalP : MonoBehaviour, IPlatforms
         accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? runAccelAmount : runDeccelAmount;
 
         //Calculate difference between current velocity and desired velocity
-        float speedDif = targetSpeed - m_Rigidbody2D.velocity.x;
+        float speedDif = targetSpeed - m_Rigidbody2D.velocity.y;
 
         float movement = speedDif * accelRate;
 
         //Convert this to a vector and apply to rigidbody
-        m_Rigidbody2D.AddForce(movement * Vector2.right, ForceMode2D.Force);
+        m_Rigidbody2D.AddForce(movement * Vector2.up, ForceMode2D.Force);
     }
 }
