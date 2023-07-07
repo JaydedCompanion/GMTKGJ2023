@@ -26,9 +26,11 @@ public class HorizontalP : MonoBehaviour, IPlatforms
     {
         if (selected)
         {
+            m_Rigidbody2D.bodyType = RigidbodyType2D.Dynamic;
             //player move this object if it is selected
             horizontalMove = Input.GetAxisRaw("Horizontal") * moveSpeed;
         }else{
+            m_Rigidbody2D.bodyType = RigidbodyType2D.Kinematic;
             horizontalMove = 0;
         }
     }
