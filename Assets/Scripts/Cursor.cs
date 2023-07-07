@@ -17,7 +17,8 @@ public class Cursor : MonoBehaviour
     void Update()
     {
         //left click
-        if(Input.GetMouseButtonDown(0)){
+        if (Input.GetMouseButtonDown(0))
+        {
             ClickObject();
         }
     }
@@ -25,19 +26,21 @@ public class Cursor : MonoBehaviour
     private void ClickObject()
     {
         Ray ray = mainCam.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        if(Physics.Raycast(ray, out hit)){
-            if(hit.collider != null){
-                IPlatforms platform = hit.collider.gameObject.GetComponent<IPlatforms>();
-                if(currentSelected != null){
-                    currentSelected.Deselect();
-                }
-                currentSelected = platform;
-                if(platform != null){
-                    platform.onClickEvent();
-                }
-                Debug.Log("hit" + hit.collider.gameObject.name);
+        RaycastHit2D hits2D = Physics2D.GetRayIntersection(ray);
+
+        if (hits2D.collider != null)
+        {
+            IPlatforms platform = hits2D.collider.gameObject.GetComponent<IPlatforms>();
+            if (currentSelected != null)
+            {
+                currentSelected.Deselect();
             }
+            currentSelected = platform;
+            if (platform != null)
+            {
+                platform.onClickEvent();
+            }
+            Debug.Log("hit" + hits2D.collider.gameObject.name);
         }
     }
 }

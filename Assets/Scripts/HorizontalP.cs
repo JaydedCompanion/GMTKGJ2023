@@ -6,7 +6,7 @@ public class HorizontalP : MonoBehaviour, IPlatforms
 {
     public bool selected = false;
 
-    private Rigidbody m_Rigidbody;
+    private Rigidbody2D m_Rigidbody2D;
     private float horizontalMove = 0f;
     public float moveSpeed = 5f;
     public float runAcceleration = 1f;
@@ -18,7 +18,7 @@ public class HorizontalP : MonoBehaviour, IPlatforms
     // Start is called before the first frame update
     void Start()
     {
-        m_Rigidbody = GetComponent<Rigidbody>();
+        m_Rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -59,11 +59,11 @@ public class HorizontalP : MonoBehaviour, IPlatforms
         accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? runAccelAmount : runDeccelAmount;
 
         //Calculate difference between current velocity and desired velocity
-        float speedDif = targetSpeed - m_Rigidbody.velocity.x;
+        float speedDif = targetSpeed - m_Rigidbody2D.velocity.x;
 
         float movement = speedDif * accelRate;
 
         //Convert this to a vector and apply to rigidbody
-        m_Rigidbody.AddForce(movement * Vector2.right, ForceMode.Force);
+        m_Rigidbody2D.AddForce(movement * Vector2.right, ForceMode2D.Force);
     }
 }
