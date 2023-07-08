@@ -33,6 +33,10 @@ public class GroupedP : MonoBehaviour, IPlatforms
     [Tooltip("the duration of jump platform triggers")]
     public float activeDuration = 10f;
 
+    private bool rotating = false;
+    [Tooltip("the duration of rotation")]
+    public float totalTime = 2f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -60,16 +64,16 @@ public class GroupedP : MonoBehaviour, IPlatforms
             if (rotate)
             {
                 
-                if (Input.GetKeyDown("q"))
+                if (Input.GetKeyDown("q") && !rotating)
                 {
                     //rotate 90 degree anticlockwisely
-                    transform.RotateAround(pivot, Vector3.forward, 90);
-                    //transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
+                    StartCoroutine(Rotate(this.transform, pivot, Vector3.forward, 90, totalTime));
+                    //transform.RotateAround(pivot, Vector3.forward, 90);
                 }
-                if (Input.GetKeyDown("e"))
+                if (Input.GetKeyDown("e") && !rotating)
                 {
                     //rotate 90 degree clockwisely
-                    transform.RotateAround(pivot, Vector3.forward, -90);
+                    StartCoroutine(Rotate(this.transform, pivot, Vector3.forward, -90, totalTime));
                 }
             }
             if (jump)
@@ -93,6 +97,34 @@ public class GroupedP : MonoBehaviour, IPlatforms
             disactivateJumpPlatforms();
         }
     }
+
+    private IEnumerator Rotate(Transform Transform, Vector3 targetTransform, Vector3 rotateAxis, float degrees, float totalTime)
+    {
+        if (rotating)
+            yield return null;
+        rotating = true;
+ 
+        Quaternion startRotation = Transform.rotation;
+        Vector3 startPosition = Transform.position;
+        // Get end position;
+        transform.RotateAround(targetTransform, rotateAxis, degrees);
+        Quaternion endRotation = Transform.rotation;
+        Vector3 endPosition = Transform.position;
+        Transform.rotation = startRotation;
+        Transform.position = startPosition;
+ 
+        float rate = degrees / totalTime;
+        //Start Rotate
+        for (float i = 0.0f; Mathf.Abs(i) < Mathf.Abs(degrees); i += Time.deltaTime * rate)
+        {
+            Transform.RotateAround(targetTransform, rotateAxis, Time.deltaTime * rate);
+            yield return null;
+        }
+        Transform.rotation = endRotation;
+        Transform.position = endPosition;
+        rotating = false;
+    }
+    
 
     void FixedUpdate()
     {
