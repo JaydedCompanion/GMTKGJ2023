@@ -8,10 +8,10 @@ public class HorizontalP : MonoBehaviour, IPlatforms
 
     private Rigidbody2D m_Rigidbody2D;
     private float horizontalMove = 0f;
-    public float moveSpeed = 10f;
-    public float runAcceleration = 10f;
-	public float runDecceleration = 50f;
-    public float runMaxSpeed = 5f;
+    public float moveSpeed = 50f;
+    public float runAcceleration = 35f;
+    public float runDecceleration = 100f;
+    public float runMaxSpeed = 2.5f;
     [HideInInspector] private float runAccelAmount;
 	[HideInInspector] private float runDeccelAmount;
 

@@ -7,15 +7,14 @@ public class JumpP : MonoBehaviour,IPlatforms
     public bool selected = false;
 
     //private Rigidbody2D m_Rigidbody2D;
-    private float verticalMove = 0f;
-    public float moveSpeed = 10f;
-    public float runAcceleration = 10f;
-	public float runDecceleration = 50f;
-    public float runMaxSpeed = 5f;
+    // private float verticalMove = 0f;
+    // public float moveSpeed = 10f;
+    // public float runAcceleration = 10f;
+	// public float runDecceleration = 50f;
+    // public float runMaxSpeed = 5f;
     [HideInInspector] private float runAccelAmount;
 	[HideInInspector] private float runDeccelAmount;
 
-    private bool bounce = false;
     private GameObject bouncePad;
     private float timer = 0f;
     public float activeDuration = 10f;
@@ -36,18 +35,16 @@ public class JumpP : MonoBehaviour,IPlatforms
             //player move this object if it is selected
             if(Input.GetKeyDown("space")){
                 timer = activeDuration;
-                bounce = true;
                 bouncePad.SetActive(true);
                 
             }
         }else{
-            verticalMove = 0;
+            //verticalMove = 0;
             //m_Rigidbody2D.velocity = new Vector3(0,0,0);
             //m_Rigidbody2D.bodyType = RigidbodyType2D.Kinematic;
         }
         timer = timer - 0.1f;
         if(timer < 0){
-            bounce = false;
             bouncePad.SetActive(false);
         }
     }

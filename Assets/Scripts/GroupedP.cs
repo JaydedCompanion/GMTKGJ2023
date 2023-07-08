@@ -5,28 +5,32 @@ using UnityEngine;
 public class GroupedP : MonoBehaviour, IPlatforms
 {
     public bool selected = false;
+    //choose base on the types of the group platform
+    [Header("Platform Properties")]
     public bool horizontal = false;
     public bool vertical = false;
     public bool jump = false;
     public bool rotate = false;
+    [Tooltip("Drag the rotate platform of this group here, it will become the pivot point")]
     public GameObject rotatePlatform = null;
+    private Vector3 pivot;
 
     private Rigidbody2D m_Rigidbody2D;
     private float horizontalMove = 0f;
     private float verticalMove = 0f;
-    public float moveSpeed = 10f;
-    public float runAcceleration = 10f;
-    public float runDecceleration = 50f;
-    public float runMaxSpeed = 5f;
-
+    [Header("Platform Speed Setting")]
+    public float moveSpeed = 50f;
+    public float runAcceleration = 35f;
+    public float runDecceleration = 100f;
+    public float runMaxSpeed = 2.5f;
     [HideInInspector]
     private float runAccelAmount;
-
     [HideInInspector]
     private float runDeccelAmount;
 
     private List<Transform> childrenList = new List<Transform>();
     private float timer = 0f;
+    [Tooltip("the duration of jump platform triggers")]
     public float activeDuration = 10f;
 
     // Start is called before the first frame update
@@ -36,6 +40,8 @@ public class GroupedP : MonoBehaviour, IPlatforms
         if (jump)
             GetAllJumpPlatformsInChildren();
         // print(childrenList[0]);
+        if(rotate)
+            pivot = rotatePlatform.transform.position;
             
     }
 
@@ -56,12 +62,13 @@ public class GroupedP : MonoBehaviour, IPlatforms
                 if (Input.GetKeyDown("q"))
                 {
                     //rotate 90 degree anticlockwisely
-                    transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
+                    transform.RotateAround(pivot, Vector3.forward, 90);
+                    //transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
                 }
                 if (Input.GetKeyDown("e"))
                 {
                     //rotate 90 degree clockwisely
-                    transform.Rotate(0.0f, 0.0f, -90.0f, Space.Self);
+                    transform.RotateAround(pivot, Vector3.forward, -90);
                 }
             }
             if (jump)
@@ -146,7 +153,6 @@ public class GroupedP : MonoBehaviour, IPlatforms
         {
             foreach (Transform tempTransform in childrenList)
             {
-                Debug.Log(tempTransform.GetChild(0).gameObject.name);
                 tempTransform.GetChild(0).gameObject.SetActive(true);
             }
         }

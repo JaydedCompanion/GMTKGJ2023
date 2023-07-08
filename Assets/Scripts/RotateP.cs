@@ -6,25 +6,25 @@ public class RotateP : MonoBehaviour, IPlatforms
 {
     public bool selected = false;
 
-    private Rigidbody2D m_Rigidbody2D;
-    private float verticalMove = 0f;
-    public float moveSpeed = 10f;
-    public float runAcceleration = 10f;
-	public float runDecceleration = 50f;
-    public float runMaxSpeed = 5f;
+    //private Rigidbody2D m_Rigidbody2D;
+    // private float verticalMove = 0f;
+    // public float moveSpeed = 10f;
+    // public float runAcceleration = 10f;
+	// public float runDecceleration = 50f;
+    // public float runMaxSpeed = 5f;
     [HideInInspector] private float runAccelAmount;
 	[HideInInspector] private float runDeccelAmount;
 
-    public float raycastDistance = 0.5f;
-    public LayerMask platformMask;
-    private GameObject storeR;
-    private GameObject storeL;
-    private GameObject storeU;
-    private GameObject storeD;
+    //public float raycastDistance = 0.5f;
+    //public LayerMask platformMask;
+    // private GameObject storeR;
+    // private GameObject storeL;
+    // private GameObject storeU;
+    // private GameObject storeD;
     // Start is called before the first frame update
     void Start()
     {
-        m_Rigidbody2D = GetComponent<Rigidbody2D>();
+        //m_Rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -32,7 +32,7 @@ public class RotateP : MonoBehaviour, IPlatforms
     {
         if (selected)
         {
-            m_Rigidbody2D.bodyType = RigidbodyType2D.Dynamic;
+            //m_Rigidbody2D.bodyType = RigidbodyType2D.Dynamic;
             //player move this object if it is selected
             if(Input.GetKeyDown("q")){
                 //rotate 90 degree anticlockwisely
@@ -42,11 +42,12 @@ public class RotateP : MonoBehaviour, IPlatforms
                 //rotate 90 degree clockwisely
                 transform.Rotate(0.0f, 0.0f, -90.0f, Space.Self);
             }
-        }else{
-            verticalMove = 0;
-            m_Rigidbody2D.velocity = new Vector3(0,0,0);
-            m_Rigidbody2D.bodyType = RigidbodyType2D.Kinematic;
         }
+        // else{
+        //     verticalMove = 0;
+        //     m_Rigidbody2D.velocity = new Vector3(0,0,0);
+        //     m_Rigidbody2D.bodyType = RigidbodyType2D.Kinematic;
+        // }
         //raycast four direction to detect object coming
         // Physics2D.queriesStartInColliders = false;
         // RaycastHit2D hitRight = Physics2D.Raycast(transform.position, transform.right, raycastDistance, platformMask);
