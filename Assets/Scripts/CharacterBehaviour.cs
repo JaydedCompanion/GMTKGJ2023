@@ -5,6 +5,8 @@ using UnityEngine;
 [ExecuteInEditMode]
 public class CharacterBehaviour : MonoBehaviour {
 
+    public static CharacterBehaviour instance;
+
     private Rigidbody2D rb;
     private Animator anim;
     [SerializeField]
@@ -16,12 +18,11 @@ public class CharacterBehaviour : MonoBehaviour {
     [Tooltip("Debug mode allows you to control the character with keyboard inputs.")]
     public bool debugMode;
 
-    [Header("General Parameters")]
+    [Header("Character Controls")]
     [Range(-1, 1)]
-    [SerializeField]
-    private int moveDir;
-    [SerializeField]
-    private bool doJumpFrame;
+    public int moveDir;
+    public bool doJumpFrame;
+    [Header("Movement Parameters")]
     [SerializeField]
     private float jumpForce;
     [SerializeField]
@@ -45,6 +46,8 @@ public class CharacterBehaviour : MonoBehaviour {
         if (!Application.isPlaying)
             return;
 
+        instance = this;
+
         if (debugMode)
             Debug.LogWarning("Debug mode enabled!", this);
 
@@ -61,9 +64,10 @@ public class CharacterBehaviour : MonoBehaviour {
             return;
 
         grounded = Physics2D.Raycast(transform.position + groundRaycastOffset, groundedRaycastOrientation, groundRaycastDistance, groundRaycastMask) || Physics2D.Raycast(transform.position + groundRaycastOffsetRev, groundedRaycastOrientationRev, groundRaycastDistance, groundRaycastMask);
+        rb.AddForce(Vector2.right * moveDir * walkForce * Time.deltaTime);
 
-        if (grounded) {
-            rb.AddForce(Vector2.right * moveDir * walkForce * Time.deltaTime);
+        if (grounded || (!grounded && moveDir != 0)) {
+            //Apply drag on x-axis
             rb.velocity = new Vector2(rb.velocity.x / (1 + (horizontalDrag * Time.deltaTime)), rb.velocity.y);
         }
 
@@ -87,11 +91,13 @@ public class CharacterBehaviour : MonoBehaviour {
 
         anim.SetBool("Walking", moveDir != 0);
         anim.SetBool("Grounded", grounded);
-        if (moveDir != 0 && grounded)
+        if (moveDir != 0)
             anim.transform.localScale = new Vector3(moveDir, 1, 1);
 
-        if (doJumpFrame && grounded)
+        if (doJumpFrame && grounded ) {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            doJumpFrame = false;
+        }
 
     }
 

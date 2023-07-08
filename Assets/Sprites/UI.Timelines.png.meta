@@ -148,11 +148,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 14
-        y: 0
+        y: 2
         width: 3
-        height: 11
+        height: 7
       alignment: 9
-      pivot: {x: 0.3333333, y: 0.45454547}
+      pivot: {x: 0.3333333, y: 0.42857143}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -169,11 +169,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 18
-        y: 0
-        width: 5
-        height: 11
+        y: 2
+        width: 7
+        height: 7
       alignment: 9
-      pivot: {x: 0, y: 0.45454547}
+      pivot: {x: 0, y: 0.42857143}
       border: {x: 2, y: 0, z: 2, w: 0}
       outline: []
       physicsShape: []
@@ -186,36 +186,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI.Timelines_MoveRightInfill
-      rect:
-        serializedVersion: 2
-        x: 24
-        y: 0
-        width: 3
-        height: 11
-      alignment: 9
-      pivot: {x: 0, y: 0.45454547}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e57720db8b15340e4a37331aeaad8c5b
-      internalID: -1306811020
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: UI.Timelines_MoveLeftMarker
       rect:
         serializedVersion: 2
-        x: 28
-        y: 0
-        width: 5
-        height: 11
+        x: 26
+        y: 2
+        width: 7
+        height: 7
       alignment: 9
-      pivot: {x: 0, y: 0.45454547}
+      pivot: {x: 0, y: 0.42857143}
       border: {x: 2, y: 0, z: 2, w: 0}
       outline: []
       physicsShape: []
@@ -223,27 +202,6 @@ TextureImporter:
       bones: []
       spriteID: f0912de80d8384166ba065cd36c5ea11
       internalID: 1815110062
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: UI.Timelines_MoveLeftInfill
-      rect:
-        serializedVersion: 2
-        x: 34
-        y: 0
-        width: 3
-        height: 11
-      alignment: 9
-      pivot: {x: 0, y: 0.45454547}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e49d3a9aeabd0426f98a7712eaba7688
-      internalID: 395380629
       vertices: []
       indices: 
       edges: []
