@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class JumpP : MonoBehaviour,IPlatforms
+public class RotateP : MonoBehaviour, IPlatforms
 {
     public bool selected = false;
 
@@ -15,16 +15,10 @@ public class JumpP : MonoBehaviour,IPlatforms
     [HideInInspector] private float runAccelAmount;
 	[HideInInspector] private float runDeccelAmount;
 
-    private bool bounce = false;
-    private GameObject bouncePad;
-    private float timer = 0f;
-    public float activeDuration = 10f;
-
     // Start is called before the first frame update
     void Start()
     {
         m_Rigidbody2D = GetComponent<Rigidbody2D>();
-        bouncePad = this.gameObject.transform.GetChild(0).gameObject;
     }
 
     // Update is called once per frame
@@ -34,21 +28,18 @@ public class JumpP : MonoBehaviour,IPlatforms
         {
             m_Rigidbody2D.bodyType = RigidbodyType2D.Dynamic;
             //player move this object if it is selected
-            if(Input.GetKeyDown("space")){
-                timer = activeDuration;
-                bounce = true;
-                bouncePad.SetActive(true);
-                
+            if(Input.GetKeyDown("q")){
+                //rotate 90 degree anticlockwisely
+                transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
+            }
+            if(Input.GetKeyDown("e")){
+                //rotate 90 degree clockwisely
+                transform.Rotate(0.0f, 0.0f, -90.0f, Space.Self);
             }
         }else{
             verticalMove = 0;
             m_Rigidbody2D.velocity = new Vector3(0,0,0);
             m_Rigidbody2D.bodyType = RigidbodyType2D.Kinematic;
-        }
-        timer = timer - 0.1f;
-        if(timer < 0){
-            bounce = false;
-            bouncePad.SetActive(false);
         }
     }
 

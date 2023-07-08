@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class VerticalP : MonoBehaviour,IPlatforms
+public class VerticalP : MonoBehaviour, IPlatforms
 {
     public bool selected = false;
 
     private Rigidbody2D m_Rigidbody2D;
     private float verticalMove = 0f;
-    public float moveSpeed = 5f;
-    public float runAcceleration = 1f;
-	public float runDecceleration = 2f;
+    public float moveSpeed = 10f;
+    public float runAcceleration = 10f;
+	public float runDecceleration = 50f;
     public float runMaxSpeed = 5f;
     [HideInInspector] private float runAccelAmount;
 	[HideInInspector] private float runDeccelAmount;
