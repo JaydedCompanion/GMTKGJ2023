@@ -13,9 +13,8 @@ GameObject:
   - component: {fileID: 8679805333665544606}
   - component: {fileID: 8855487244312955773}
   - component: {fileID: 7547525075892028306}
-  - component: {fileID: 475046032996212209}
   m_Layer: 6
-  m_Name: Horizontal Platform
+  m_Name: Horizontal Platform 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -94,7 +93,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1933408237, guid: 0c3303635ca944096b2539c719c60f1b, type: 3}
+  m_Sprite: {fileID: 363910111, guid: 0c3303635ca944096b2539c719c60f1b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -177,16 +176,3 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &475046032996212209
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4322390746949432020}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed201d1d790ecd4418ca1840f43dc6e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pressedSprite: {fileID: -243795987, guid: 0c3303635ca944096b2539c719c60f1b, type: 3}
