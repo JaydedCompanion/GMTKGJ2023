@@ -40,14 +40,15 @@ public class GroupedP : MonoBehaviour, IPlatforms
         if (jump)
             GetAllJumpPlatformsInChildren();
         // print(childrenList[0]);
-        if(rotate)
-            pivot = rotatePlatform.transform.position;
+        
             
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(rotate)
+            pivot = rotatePlatform.transform.position;
         if (selected)
         {
             m_Rigidbody2D.bodyType = RigidbodyType2D.Dynamic;
