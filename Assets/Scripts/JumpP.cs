@@ -6,7 +6,7 @@ public class JumpP : MonoBehaviour,IPlatforms
 {
     public bool selected = false;
 
-    private Rigidbody2D m_Rigidbody2D;
+    //private Rigidbody2D m_Rigidbody2D;
     private float verticalMove = 0f;
     public float moveSpeed = 10f;
     public float runAcceleration = 10f;
@@ -23,7 +23,7 @@ public class JumpP : MonoBehaviour,IPlatforms
     // Start is called before the first frame update
     void Start()
     {
-        m_Rigidbody2D = GetComponent<Rigidbody2D>();
+        //m_Rigidbody2D = GetComponent<Rigidbody2D>();
         bouncePad = this.gameObject.transform.GetChild(0).gameObject;
     }
 
@@ -32,7 +32,7 @@ public class JumpP : MonoBehaviour,IPlatforms
     {
         if (selected)
         {
-            m_Rigidbody2D.bodyType = RigidbodyType2D.Dynamic;
+            //m_Rigidbody2D.bodyType = RigidbodyType2D.Dynamic;
             //player move this object if it is selected
             if(Input.GetKeyDown("space")){
                 timer = activeDuration;
@@ -42,8 +42,8 @@ public class JumpP : MonoBehaviour,IPlatforms
             }
         }else{
             verticalMove = 0;
-            m_Rigidbody2D.velocity = new Vector3(0,0,0);
-            m_Rigidbody2D.bodyType = RigidbodyType2D.Kinematic;
+            //m_Rigidbody2D.velocity = new Vector3(0,0,0);
+            //m_Rigidbody2D.bodyType = RigidbodyType2D.Kinematic;
         }
         timer = timer - 0.1f;
         if(timer < 0){
