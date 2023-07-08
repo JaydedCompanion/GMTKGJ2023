@@ -96,8 +96,9 @@ public class CharacterBehaviour : MonoBehaviour {
 
         if (doJumpFrame && grounded ) {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-            doJumpFrame = false;
         }
+
+        doJumpFrame = false;
 
     }
 
