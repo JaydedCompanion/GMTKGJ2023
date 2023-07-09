@@ -35,7 +35,7 @@ Transform:
   - {fileID: 2232533519610393183}
   - {fileID: 6015045073150934757}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &733847295325623710
 BoxCollider2D:
@@ -133,7 +133,7 @@ MonoBehaviour:
   runDecceleration: 100
   runMaxSpeed: 2.5
   activeDuration: 10
-  totalTime: 2
+  totalTime: 1
 --- !u!61 &7031378600305851702
 BoxCollider2D:
   m_ObjectHideFlags: 0
