@@ -7,7 +7,7 @@ public class CharacterBehaviour : MonoBehaviour {
 
     public static CharacterBehaviour instance;
 
-    private Rigidbody2D rb;
+    public Rigidbody2D rb { get; private set; }
     private Animator anim;
     [SerializeField]
     private bool grounded;

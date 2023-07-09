@@ -40,6 +40,7 @@ namespace Timeline {
 
             transform.position = Camera.main.ScreenToWorldPoint(Camera.main.pixelRect.size * new Vector2(0.5f, 1)) + positionOffset;
             if (!Application.isPlaying) {
+                instance = this;
                 Debug.DrawRay(Camera.main.ScreenToWorldPoint(Camera.main.pixelRect.size * new Vector2(0.5f, 1)), -Vector2.one, Color.red);
                 Debug.DrawRay(Camera.main.ScreenToWorldPoint(Camera.main.pixelRect.size * new Vector2(0.5f, 1)), Vector2.down, Color.red);
                 UpdateTrackUI();

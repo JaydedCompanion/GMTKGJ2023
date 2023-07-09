@@ -17,11 +17,12 @@ namespace Timeline {
         // Update is called once per frame
         void Update() {
 
-            transform.localPosition = new Vector3(
-                Timeline.SnapToGrid((Timeline.instance.playback - 0.5f) * Timeline.instance.timelineScale * Timeline.instance.trackDuration),
-                transform.localPosition.y,
-                transform.localPosition.z
-            );
+            if (Timeline.instance)
+                transform.localPosition = new Vector3(
+                    Timeline.SnapToGrid((Timeline.instance.playback - 0.5f) * Timeline.instance.timelineScale * Timeline.instance.trackDuration),
+                    transform.localPosition.y,
+                    transform.localPosition.z
+                );
 
             Debug.DrawRay(transform.position, Vector2.up * 3, new Color (255, 97, 181));
 
