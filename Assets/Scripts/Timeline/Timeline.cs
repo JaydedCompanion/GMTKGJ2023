@@ -47,8 +47,8 @@ namespace Timeline {
             }
             playback += Time.deltaTime / trackDuration;
             if (playback > 1) {
-                playback -= 1;
-                onTimelineLoop.Invoke();
+                playback = Mathf.Min (playback, 1);
+                //onTimelineLoop.Invoke();
             }
 
         }
