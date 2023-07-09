@@ -39,13 +39,18 @@ public class GroupedP : MonoBehaviour, IPlatforms
     [Tooltip("the duration of rotation")]
     public float totalTime = 2f;
 
+    private Animator animator;
     // Start is called before the first frame update
     void Start()
     {
         m_Rigidbody2D = GetComponent<Rigidbody2D>();
         GetAllChildren();
         if (jump)
+        {
             GetAllJumpPlatformsInChildren();
+            animator = childrenList[0].gameObject.GetComponent<Animator>();
+        }
+            
         // print(childrenList[0]);
         
             
@@ -85,6 +90,7 @@ public class GroupedP : MonoBehaviour, IPlatforms
             {
                 if (Input.GetKeyDown("space"))
                 {
+                    animator.SetBool("Extend", true);
                     timer = activeDuration;
                     activateJumpPlatforms();
                 }
@@ -98,11 +104,25 @@ public class GroupedP : MonoBehaviour, IPlatforms
             horizontalMove = 0;
             m_Rigidbody2D.velocity = new Vector3(0, 0, 0);
             m_Rigidbody2D.bodyType = RigidbodyType2D.Kinematic;
+        }else if(selected && freezed){
+            if (jump)
+            {
+                if (Input.GetKeyDown("space"))
+                {
+                    animator.SetBool("Extend", true);
+                    timer = activeDuration;
+                    activateJumpPlatforms();
+                }
+            }
         }
         timer = timer - 0.1f;
-        if (timer < 0) {
+        if(jump){
+           if (timer < 0) {
+            animator.SetBool("Extend", false);
             disactivateJumpPlatforms();
+            } 
         }
+        
         if(freezed){
             spriteFreeze();
         }else{
@@ -198,7 +218,7 @@ public class GroupedP : MonoBehaviour, IPlatforms
         {
             foreach (Transform tempTransform in childrenList)
             {
-                tempTransform.GetChild(0).gameObject.SetActive(true);
+                tempTransform.GetChild(2).gameObject.SetActive(true);
             }
         }
     }
@@ -210,7 +230,7 @@ public class GroupedP : MonoBehaviour, IPlatforms
             foreach (Transform tempTransform in childrenList)
             {
                 //Debug.Log(tempTransform.GetChild(0).gameObject.name);
-                tempTransform.GetChild(0).gameObject.SetActive(false);
+                tempTransform.GetChild(2).gameObject.SetActive(false);
             }
         }
     }

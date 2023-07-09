@@ -8,10 +8,12 @@ public class BouncePad : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        Rigidbody2D target;
-        print(col.gameObject.name);
-        target = col.gameObject.GetComponent<Rigidbody2D>();
-        if(target != null)
-        target.velocity = transform.up * force;
+        if (col.CompareTag("Player"))
+        {
+            Rigidbody2D target;
+            target = col.gameObject.GetComponent<Rigidbody2D>();
+            if (target != null)
+                target.velocity = transform.up * force;
+        }
     }
 }
