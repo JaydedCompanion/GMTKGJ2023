@@ -10,6 +10,7 @@ public class SpriteChange : MonoBehaviour
 
     private bool isPressed = false;
     private bool isFreezed = false;
+    public bool IamJumpPlatform = false;
 
     void Start() {
         defaultSprite = this.gameObject.GetComponent<SpriteRenderer>().sprite;
@@ -38,7 +39,9 @@ public class SpriteChange : MonoBehaviour
         isPressed = false;
     }
     public void Freeze(){
-        isFreezed = true;
+        //freeze will not affect jump platform
+        if(!IamJumpPlatform)
+            isFreezed = true;
     }
     public void UnFreeze(){
         isFreezed = false;
