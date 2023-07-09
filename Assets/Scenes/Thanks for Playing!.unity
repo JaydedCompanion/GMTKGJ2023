@@ -1028,7 +1028,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Thanks for playing our game!\n\n\n\n\nDeveloped for the \n2023 GMTK Game
-    Jam by:\n<color=#fee761>JaydedCompanion</color>\n<color=#3dbefa>LemonL1ke</color>\n<color=#e43b44>@elliagart</color>"
+    Jam by:\n<color=#fee761>JaydedCompanion</color>\n<color=#3dbefa>LemonL1ke</color>\n<color=#e43b44>elliag</color>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 291536e54fc67425ca74316b3321d93a, type: 2}
   m_sharedMaterial: {fileID: 4653509343591600423, guid: 291536e54fc67425ca74316b3321d93a, type: 2}
@@ -3305,7 +3305,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 888858008}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.022844767, y: 17.092403, z: -30}
+  m_LocalPosition: {x: -0.03124988, y: 17.09375, z: -30}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
