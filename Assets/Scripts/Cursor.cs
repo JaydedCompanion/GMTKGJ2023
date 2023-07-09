@@ -8,6 +8,8 @@ public class Cursor : MonoBehaviour
     private Camera mainCam;
     private IPlatforms currentSelected;
 
+    private bool paused = false;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -24,8 +26,27 @@ public class Cursor : MonoBehaviour
         }
         if (Input.GetKeyDown("r"))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            StartCoroutine("RestartCoroutine");
+            enabled = false;
         }
+        if (Input.GetButtonDown("Cancel")) {
+            paused = !paused;
+            if (paused)
+                ScreenTransition.ShowText("Paused");
+            else
+                ScreenTransition.HideText();
+            Time.timeScale = paused ? 0 : 1;
+        }
+    }
+
+    public IEnumerator RestartCoroutine() {
+
+        ScreenTransition.ShowTransition();
+
+        yield return new WaitForSeconds(0.5f);
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
     }
 
     private void ClickObject()
