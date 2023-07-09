@@ -4526,6 +4526,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: V_PlatformA
       objectReference: {fileID: 0}
+    - target: {fileID: 2328038945020726806, guid: 1ccbbea432d0c9d4aab37c747f1501bf, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2328038945020726806, guid: 1ccbbea432d0c9d4aab37c747f1501bf, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2328038945020726806, guid: 1ccbbea432d0c9d4aab37c747f1501bf, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3772227749338882580, guid: 1ccbbea432d0c9d4aab37c747f1501bf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4070038996265644411, guid: 1ccbbea432d0c9d4aab37c747f1501bf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6293476616138211685, guid: 1ccbbea432d0c9d4aab37c747f1501bf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6330161329569239854, guid: 1ccbbea432d0c9d4aab37c747f1501bf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8401043525910459383, guid: 1ccbbea432d0c9d4aab37c747f1501bf, type: 3}
       propertyPath: m_RootOrder
       value: -1
