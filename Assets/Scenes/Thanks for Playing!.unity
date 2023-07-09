@@ -6741,10 +6741,6 @@ PrefabInstance:
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7462414555621686633, guid: 1b1b382baa072403aafe7051ba06378a, type: 3}
-      propertyPath: m_fontSize
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7462414555621686633, guid: 1b1b382baa072403aafe7051ba06378a, type: 3}
       propertyPath: m_fontAsset
       value: 
       objectReference: {fileID: 11400000, guid: 291536e54fc67425ca74316b3321d93a, type: 2}
