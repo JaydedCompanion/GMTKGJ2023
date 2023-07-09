@@ -6,18 +6,41 @@ public class SpriteChange : MonoBehaviour
 {
     [SerializeField]
     private Sprite pressedSprite;
-
     private Sprite defaultSprite;
 
-    private HorizontalP p;
+    private bool isPressed = false;
+    private bool isFreezed = false;
 
     void Start() {
         defaultSprite = this.gameObject.GetComponent<SpriteRenderer>().sprite;
-        p = this.gameObject.GetComponent<HorizontalP>();
+        
     }
 
     void Update() {
-        bool isPressed = p.selected;
-        this.gameObject.GetComponent<SpriteRenderer>().sprite = isPressed ? pressedSprite : defaultSprite;
+        if(isPressed)
+        {
+            this.gameObject.GetComponent<SpriteRenderer>().sprite = pressedSprite;
+        }else{
+            this.gameObject.GetComponent<SpriteRenderer>().sprite = defaultSprite;
+        }
+        if(isFreezed)
+        {
+            this.gameObject.GetComponent<SpriteRenderer>().color = new Color(0.2f,0.2f,0.2f,1f);
+        }else{
+            this.gameObject.GetComponent<SpriteRenderer>().color = new Color(1f,1f,1f,1f);
+        }
+    }
+
+    public void Pressed(){
+        isPressed = true;
+    }
+    public void Released(){
+        isPressed = false;
+    }
+    public void Freeze(){
+        isFreezed = true;
+    }
+    public void UnFreeze(){
+        isFreezed = false;
     }
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class GroupedP : MonoBehaviour, IPlatforms
 {
     public bool selected = false;
+    public bool freezed = false;
     //choose base on the types of the group platform
     [Header("Platform Properties")]
     public bool horizontal = false;
@@ -29,6 +30,7 @@ public class GroupedP : MonoBehaviour, IPlatforms
     private float runDeccelAmount;
 
     private List<Transform> childrenList = new List<Transform>();
+    private List<Transform> childrenListOutline = new List<Transform>();
     private float timer = 0f;
     [Tooltip("the duration of jump platform triggers")]
     public float activeDuration = 10f;
@@ -41,6 +43,7 @@ public class GroupedP : MonoBehaviour, IPlatforms
     void Start()
     {
         m_Rigidbody2D = GetComponent<Rigidbody2D>();
+        GetAllChildren();
         if (jump)
             GetAllJumpPlatformsInChildren();
         // print(childrenList[0]);
@@ -53,8 +56,10 @@ public class GroupedP : MonoBehaviour, IPlatforms
     {
         if(rotate)
             pivot = rotatePlatform.transform.position;
-        if (selected)
+        if (selected && !freezed)
         {
+            activateOutlines();
+            spritePress();
             m_Rigidbody2D.bodyType = RigidbodyType2D.Dynamic;
             //player move this object if it is selected
             if (vertical)
@@ -85,8 +90,10 @@ public class GroupedP : MonoBehaviour, IPlatforms
                 }
             }
         }
-        else
+        else if(selected != true)
         {
+            disactivateOutlines();
+            spriteRelease();
             verticalMove = 0;
             horizontalMove = 0;
             m_Rigidbody2D.velocity = new Vector3(0, 0, 0);
@@ -95,6 +102,11 @@ public class GroupedP : MonoBehaviour, IPlatforms
         timer = timer - 0.1f;
         if (timer < 0) {
             disactivateJumpPlatforms();
+        }
+        if(freezed){
+            spriteFreeze();
+        }else{
+            spriteUnFreeze();
         }
     }
 
@@ -210,5 +222,95 @@ public class GroupedP : MonoBehaviour, IPlatforms
             {
                 childrenList.Add(child);
             }
+    }
+
+    void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            freezed = true;
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            freezed = false;
+        }
+    }
+
+    public void activateOutlines()
+    {
+        if (childrenListOutline != null)
+        {
+            foreach (Transform tempTransform in childrenListOutline)
+            {
+                tempTransform.GetChild(0).gameObject.SetActive(true);
+                tempTransform.GetChild(1).gameObject.SetActive(true);
+            }
+        }
+    }
+
+    public void disactivateOutlines()
+    {
+        if (childrenListOutline != null)
+        {
+            foreach (Transform tempTransform in childrenListOutline)
+            {
+                tempTransform.GetChild(0).gameObject.SetActive(false);
+                tempTransform.GetChild(1).gameObject.SetActive(false);
+            }
+        }
+    }
+
+    void GetAllChildren()
+    {
+        foreach (Transform child in transform)
+            childrenListOutline.Add(child);
+    }
+
+    public void spritePress()
+    {
+        if (childrenListOutline != null)
+        {
+            foreach (Transform tempTransform in childrenListOutline)
+            {
+                tempTransform.gameObject.GetComponent<SpriteChange>().Pressed();
+            }
+        }
+    }
+
+    public void spriteRelease()
+    {
+        if (childrenListOutline != null)
+        {
+            foreach (Transform tempTransform in childrenListOutline)
+            {
+                tempTransform.gameObject.GetComponent<SpriteChange>().Released();
+            }
+        }
+    }
+
+    public void spriteFreeze()
+    {
+        if (childrenListOutline != null)
+        {
+            foreach (Transform tempTransform in childrenListOutline)
+            {
+                tempTransform.gameObject.GetComponent<SpriteChange>().Freeze();
+            }
+        }
+    }
+
+    public void spriteUnFreeze()
+    {
+        if (childrenListOutline != null)
+        {
+            foreach (Transform tempTransform in childrenListOutline)
+            {
+                tempTransform.gameObject.GetComponent<SpriteChange>().UnFreeze();
+            }
+        }
     }
 }
