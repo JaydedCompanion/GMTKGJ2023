@@ -37,6 +37,11 @@ public class Cursor : MonoBehaviour
                 ScreenTransition.HideText();
             Time.timeScale = paused ? 0 : 1;
         }
+        for (int i = 49; i < 59; i++)
+            if (Input.GetKeyDown((KeyCode)i)) {
+                ScreenTransition.levelTransition = true;
+                SceneManager.LoadScene(i - 49);
+            }
     }
 
     public IEnumerator RestartCoroutine() {
