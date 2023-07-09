@@ -3132,7 +3132,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 888858008}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.009831627, y: 6.9803486, z: -30}
+  m_LocalPosition: {x: -0.03124988, y: 5.09375, z: -30}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3569,15 +3569,15 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
+    x: 0.0009376465
+    y: 0.0021857924
+    width: 0.99765587
+    height: 0.9967213
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 9
+  orthographic size: 7.125
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -3589,7 +3589,7 @@ Camera:
   m_HDR: 1
   m_AllowMSAA: 1
   m_AllowDynamicResolution: 0
-  m_ForceIntoRT: 0
+  m_ForceIntoRT: 1
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
@@ -6467,6 +6467,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 216035562344297441, guid: 1b1b382baa072403aafe7051ba06378a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 4653509343591600423, guid: 291536e54fc67425ca74316b3321d93a, type: 2}
     - target: {fileID: 2246228354485287677, guid: 1b1b382baa072403aafe7051ba06378a, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -6518,6 +6522,26 @@ PrefabInstance:
     - target: {fileID: 5458030651444377245, guid: 1b1b382baa072403aafe7051ba06378a, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7462414555621686633, guid: 1b1b382baa072403aafe7051ba06378a, type: 3}
+      propertyPath: m_fontSize
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7462414555621686633, guid: 1b1b382baa072403aafe7051ba06378a, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 291536e54fc67425ca74316b3321d93a, type: 2}
+    - target: {fileID: 7462414555621686633, guid: 1b1b382baa072403aafe7051ba06378a, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7462414555621686633, guid: 1b1b382baa072403aafe7051ba06378a, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 4653509343591600423, guid: 291536e54fc67425ca74316b3321d93a, type: 2}
+    - target: {fileID: 7462414555621686633, guid: 1b1b382baa072403aafe7051ba06378a, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8694019855565101371, guid: 1b1b382baa072403aafe7051ba06378a, type: 3}
       propertyPath: m_Layer
