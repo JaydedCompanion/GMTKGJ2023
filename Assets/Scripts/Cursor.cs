@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Cursor : MonoBehaviour
 {
@@ -20,6 +21,10 @@ public class Cursor : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             ClickObject();
+        }
+        if (Input.GetKeyDown("r"))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 
