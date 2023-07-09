@@ -114,6 +114,12 @@ public class GroupedP : MonoBehaviour, IPlatforms
                     activateJumpPlatforms();
                 }
             }
+            disactivateOutlines();
+            spriteRelease();
+            verticalMove = 0;
+            horizontalMove = 0;
+            m_Rigidbody2D.velocity = new Vector3(0, 0, 0);
+            m_Rigidbody2D.bodyType = RigidbodyType2D.Kinematic;
         }
         timer = timer - 0.1f;
         if(jump){
